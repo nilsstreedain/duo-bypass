@@ -1,0 +1,27 @@
+#!/bin/sh +x
+
+#	duo-workaround
+#
+#	Script to generate valid HOTP key from DUO Security credentials allowing
+#	use of 3rd party and open source authentication applications.
+#
+#	Dependacies:
+#		- jq		- coreutils		- qrencode		- oath-toolkit
+#
+#	Created by Nils Streedain on 9/25/22.
+
+# Remove characters before (and including) '=' in QR code URL
+API_PARAMS=${1#*=}
+
+# Parse hostname from image URL and retrieve HOTP credentials from DUO API
+RESPONSE=$(curl -s POST "${1%%frame*}push/v2/activation/${API_PARAMS%-*}?customer_protocol=1" -H "User-Agent: okhttp/2.7.5" -d '{"jailbroken":"false","architecture":"arm64","region":"US","app_id":"com.duosecurity.duomobile","full_disk_encryption":"true","passcode_status":"true","platform":"Android","app_version":"3.49.0","app_build_number":"323001","version":"11","manufacturer":"unknown","language":"en","model":"Pixel 3a","security_patch_level":"2021-02-01"}' | jq -j .response)
+
+# Parse DUO hotp_secret and customer_name
+CUSTOMER=$(jq -j .customer_name <<< $RESPONSE)
+SECRET=$(jq -j .hotp_secret <<< $RESPONSE | base32)
+SECRET=${SECRET//[=]/}
+
+# Generate OTPAUTH QR Code and Bypass Codes
+qrencode "otpauth://hotp/${CUSTOMER}?secret=${SECRET}&issuer=DUO&counter=1" -t ANSI
+echo "Key: ${SECRET}\n\nWarning: Only HOTP (not just TOTP) applications are supported, such as Google Authenticator.\nUse the following one time codes to bypass DUO if you lose access to your device:"
+oathtool $SECRET -b -w 10
