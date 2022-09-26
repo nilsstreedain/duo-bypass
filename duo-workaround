@@ -13,9 +13,6 @@
 # Remove characters before (and including) '=' in QR code URL
 API_PARAMS=${1#*=}
 
-# Base64 decode the HOST portion of the key (change "${HOST}push" to "https://${HOST}/push")
-#HOST=$(echo ${API_PARAMS##*-}== | base64 --decode)
-
 # Parse hostname from image URL and retrieve HOTP credentials from DUO API
 RESPONSE=$(curl -s POST "${1%%frame*}push/v2/activation/${API_PARAMS%-*}?customer_protocol=1" -H "User-Agent: okhttp/2.7.5" -d '{"jailbroken":"false","architecture":"arm64","region":"US","app_id":"com.duosecurity.duomobile","full_disk_encryption":"true","passcode_status":"true","platform":"Android","app_version":"3.49.0","app_build_number":"323001","version":"11","manufacturer":"unknown","language":"en","model":"Pixel 3a","security_patch_level":"2021-02-01"}' | jq -j .response)
 
