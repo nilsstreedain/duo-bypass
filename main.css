@@ -1,0 +1,18 @@
+:root {
+	--accent: #737239;
+	--lGray: #f4f4f4;
+	--mGray: #ebebeb;
+	--dGray: #878787;
+	--pad: 30px;
+}
+
+@font-face {
+	font-family: typeface;
+	src: url(typeface.woff2) format(woff2),
+		url(typeface.woff) format(woff);
+}
+
+body {
+	margin: 0;
+	font-family: typeface;
+}
