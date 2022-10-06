@@ -1,4 +1,4 @@
-# duo-workaround
+# duo-bypass
 Script to generate valid HOTP key from DUO Security credentials allowing use of 3rd party and open source authentication applications such as Google Authenticator. An automatic installer, along with a online version is currently in progress.
 
 ## Install:
@@ -16,7 +16,7 @@ chmod +x /usr/local/bin/duo-workaround
 
 
 ## Setup:
-1. Install `duo-workaround`
+1. Install `duo-bypass`
 2. Navigate to your DUO Security Portal
 3. Login with your current DUO 2fa method
 4. On your device management screen, select `+ Add another device`
@@ -36,7 +36,7 @@ chmod +x /usr/local/bin/duo-workaround
 
 9. In terminal type the following and press 'Enter' (replace the URL with the URL you copied)
 ```bash
-duo-workaround 'https://api-12345678.duosecurity.com/frame...'
+duo-bypass 'https://api-12345678.duosecurity.com/frame...'
 ```
 ![SCR-20220926-1hx](https://user-images.githubusercontent.com/25465133/192225295-545c1a31-fcf9-4a2d-b212-281c2f4ce324.png)
 
