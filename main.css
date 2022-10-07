@@ -1,5 +1,6 @@
 :root {
-	--accent: #737239;
+	--accent: #80c368;
+	--white: #FFF;
 	--lGray: #f4f4f4;
 	--mGray: #ebebeb;
 	--dGray: #878787;
@@ -8,11 +9,123 @@
 
 @font-face {
 	font-family: typeface;
-	src: url(typeface.woff2) format(woff2),
-		url(typeface.woff) format(woff);
+	src: url(resources/typeface.woff2) format(woff2),
+		url(resources/typeface.woff) format(woff);
 }
 
 body {
-	margin: 0;
+	margin: calc(3 * var(--pad)) 5%;
+	background-color: var(--lGray);
 	font-family: typeface;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	padding: 0 5%;
+	left: 0;
+	height: 57px;
+	background-color: var(--lGray);
+	border-bottom: 3px solid var(--mGray);
+}
+
+nav a {
+	border: none;
+	float: left;
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	padding: 0 22px;
+	font-weight: bold;
+}
+
+.page {
+	text-decoration: none;
+	color: var(--dGray);
+}
+
+.curr {
+	color: var(--accent);
+	border-bottom: 3px solid var(--accent);
+}
+
+.curr, .page:hover {
+	background-color: var(--mGray);
+}
+
+main {
+	padding: var(--pad);
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 var(--mGray);
+	background-color: var(--white);
+}
+
+ol img {
+	width: 500px;
+	padding-bottom: 10px;
+	border-radius: 15px;
+}
+
+#tool {
+	display: inline-block;
+	width: 100%;
+}
+
+#left {
+	width: calc(100% - 256px - var(--pad));
+	float: left;
+}
+
+#left input, #left button {
+	border-radius: 5px;
+	height: var(--pad);
+	padding: 0;
+	margin: 0 0 10px 0;
+	font-size: 1em;
+	font-family: typeface;
+}
+
+#urlInput {
+	width: calc(100% - 120px);
+	border: 1px solid var(--mGray);
+}
+
+form button {
+	width: 100px;
+	border: none;
+}
+
+form button, footer {
+	background-color: var(--accent);
+	color: var(--white);
+	
+}
+
+button:active {
+	background-color: var(--dGray);
+	color: var(--mGray);
+}
+
+#qrcode {
+	float: right;
+	width: 256px;
+	height: 256px;
+}
+
+footer {
+	position: fixed;
+	display: flex;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	align-items: center;
+	justify-content: center;
+}
+
+footer a {
+	color: var(--white);
 }
