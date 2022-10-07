@@ -1,8 +1,8 @@
 function b32encode(s) {
 	var l = Math.ceil((s.length << 3) / 5) * 5;
 	var c, b;
-	var o = "";
-	var a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+	var o = '';
+	var a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
 	// Loop over each bit of the string & parse 8 bit chars into 5 bit segments
 	for (var i = 0; i < l; i++) {
@@ -30,13 +30,16 @@ async function duoBypass() {
 	
 	// Create QR code from DUO API response
 	response.json().then(data => {
-		const url = `otpauth://hotp/${data.response.customer_name}?secret=${b32encode(data.response.hotp_secret)}&issuer=DUO`
-		new QRCode(document.getElementById("qrcode"), url);
+		const key = b32encode(data.response.hotp_secret);
+		const url = `otpauth://hotp/${data.response.customer_name}?secret=${key}&issuer=DUO`;
+		new QRCode(document.getElementById('qrcode'), url);
+		document.getElementById('key').innerText = key;
 	});
 }
 
-// Prevent form submittion on enter and grab input URL
-addEventListener("submit", function (e) {
-	e.preventDefault();
-	duoBypass();
-});
+function setPage(o, n, e) {
+	document.getElementById(o).style.display = 'none';
+	document.getElementById(n).style.display = 'inline-block';
+	document.getElementById('curr').removeAttribute('id');
+	e.id = 'curr';
+}

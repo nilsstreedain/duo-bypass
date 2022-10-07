@@ -9,9 +9,9 @@
 	</head>
 	<body>
 		<nav>
-			<a class="page curr" href="index.html">duo-bypass</a>
-			<a class="page" href="faq.html">FAQ</a>
-			<a class="page" href="https://github.com/nilsstreedain/duo-bypass" target="_blank">GitHub</a>
+			<a id="curr" onclick="setPage('faq', 'tool', this)">duo-bypass</a>
+			<a onclick="setPage('tool', 'faq', this)">FAQ</a>
+			<a href="https://github.com/nilsstreedain/duo-bypass" target="_blank">GitHub</a>
 		</nav>
 		<main>
 			<div id="tool">
@@ -19,13 +19,48 @@
 					<h1>duo-bypass</h1>
 					<p>duo-bypass allows you to generate 2FA codes in any standard 2FA application (supporting HOTP) for use with Cisco's DUO Mobile.
 					<p>Paste the DUO 2FA QR code image URL below and select <b>Bypass</b>.</p>
-					<form>
-						<input type="text" id="urlInput"></input>
-						<button id="bypass" onclick="duoBypass()">Bypass</button>
-					<form>
-					<p>Scan the QR code into your chosen 2FA application.</p>
+					<input type="text" id="urlInput"></input>
+					<button id="bypass" onclick="duoBypass()">Bypass</button>
+					<p>Scan the QR code into your chosen 2FA application. If your application does not support QR codes, copy and paste the key below:</p>
+					<p id="key"></p>
 				</div>
 				<div id="qrcode"></div>
+			</div>
+			<div id="faq">
+				<h1>Welcome to duo-bypass!</h1>
+				<p>duo-bypass is a tool allowing you to use any valid two factor authentication app (that supports HOTP) in place of Cisco's proprietary proprietary DUO software.</p>
+				<h2>Is it secure?</h2>
+				<p>Absolutely, DUO uses the same HOTP standards as every other 2FA app in the security space. They just encapsulate that standard in their own software to lock you down to their app. This tool tells DUO that you are the DUO app allowing you to activate a 2FA key in whatever app <b>you</b> choose.</p>
+				<p>Alternatively, if you are uncomfortable placing your DUO credentials in a web interface, there is a <a href="https://github.com/nilsstreedain/duo-bypass">script-based</a> version of the tool.</p>
+				<h2>Why not just use DUO?</h2>
+				<p>There are many reasons you may want to avoid using the DUO app from usability to ideological. I've listed a few below:</p>
+				<ul>
+					<li>You already use a 2FA app like Google Authenticator and don't want another.</li>
+					<li>You prefer using open-source or non-proprietary software</li>
+					<li>You are uncomfortable with the data collection that takes place within the DUO Mobile application.</li>
+					<li>You would like to have DUO 2FA access on a computer and not just a mobile device that may die.</li>
+					<li>You have multiple mobile devices you would like to secure with a single could-based 2FA solution.</li>
+					<li>You would like to have 2FA autofill with supported apps to not ever have to deal with DUO notifications or codes.</li>
+				</ul>
+				<h2>How to setup duo-bypass:</h2>
+				<ol>
+					<li>Navigate you your organization's DUO Security Portal.</li>
+					<li>Login with your current DUO 2FA method.</li>
+					<li>In the Security Portal, select <b>+ Add another device</b>.</li>
+					<img src="resources/faq1.png">
+					<li>Select <b>Tablet</b>.</li>
+					<img src="resources/faq2.png">
+					<li>Select <b>Android</b>.</li>
+					<img src="resources/faq3.png">
+					<li>Select <b>I have DUO Mobile installed</b>.</li>
+					<img src="resources/faq4.png">
+					<li>Right click on the provided QR code and copy the image URL.</li>
+					<img src="resources/faq5.png">
+					<li>Navigate to the <a href="index.html">duo-bypass</a> tool.</li>
+					<li>Paste the image URL into the duo-bypass tool and select <b>bypass</b>.</li>
+					<li>Scan the QR code into your chossen 2FA application. If the app does not support a QR code, copy the key below the QR code into your app.</li>
+					<li>Generate/test your first bypass code and you're done! (You can also now rename the device in DUO if you would like)</li>
+				</ol>
 			</div>
 		</main>
 		<footer>

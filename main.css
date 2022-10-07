@@ -37,22 +37,18 @@ nav a {
 	height: 100%;
 	align-items: center;
 	justify-content: center;
-	font-size: 16px;
 	padding: 0 22px;
 	font-weight: bold;
-}
-
-.page {
 	text-decoration: none;
 	color: var(--dGray);
 }
 
-.curr {
+#curr {
 	color: var(--accent);
 	border-bottom: 3px solid var(--accent);
 }
 
-.curr, .page:hover {
+#curr, nav a:hover {
 	background-color: var(--mGray);
 }
 
@@ -88,23 +84,22 @@ ol img {
 	font-family: typeface;
 }
 
-#urlInput {
+input {
 	width: calc(100% - 120px);
 	border: 1px solid var(--mGray);
 }
 
-form button {
+button {
 	width: 100px;
 	border: none;
 }
 
-form button, footer {
+button, footer {
 	background-color: var(--accent);
 	color: var(--white);
-	
 }
 
-button:active {
+form button:active {
 	background-color: var(--dGray);
 	color: var(--mGray);
 }
@@ -113,6 +108,14 @@ button:active {
 	float: right;
 	width: 256px;
 	height: 256px;
+}
+
+#key {
+	overflow-wrap: break-word;
+}
+
+#faq {
+	display: none;
 }
 
 footer {
