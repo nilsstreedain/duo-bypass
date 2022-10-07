@@ -1,4 +1,4 @@
-# duo-bypass
+# duo-bypass (script)
 Script to generate valid HOTP key from DUO Security credentials allowing use of 3rd party and open source authentication applications such as Google Authenticator. An automatic installer, along with a online version is currently in progress.
 
 ## Install:
