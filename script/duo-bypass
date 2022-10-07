@@ -22,6 +22,5 @@ SECRET=$(jq -j .hotp_secret <<< $RESPONSE | base32)
 SECRET=${SECRET//[=]/}
 
 # Generate OTPAUTH QR Code and Bypass Codes
-qrencode "otpauth://hotp/${CUSTOMER}?secret=${SECRET}&issuer=DUO&counter=1" -t ANSI
-echo "Key: ${SECRET}\n\nWarning: Only HOTP (not just TOTP) applications are supported, such as Google Authenticator.\nUse the following one time codes to bypass DUO if you lose access to your device:"
-oathtool $SECRET -b -w 10
+qrencode "otpauth://hotp/${CUSTOMER}?secret=${SECRET}&issuer=DUO" -t ANSI
+echo "Key: ${SECRET}\n\nWarning: Only HOTP (not just TOTP) applications are supported, such as Google Authenticator."

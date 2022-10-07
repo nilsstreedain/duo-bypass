@@ -1,44 +1,33 @@
-# duo-workaround
-Script to generate valid HOTP key from DUO Security credentials allowing use of 3rd party and open source authentication applications such as Google Authenticator. An automatic installer, along with a online version is currently in progress.
+# duo-bypass
+duo-bypass is a tool allowing you to use any valid two factor authentication app (that supports HOTP) in place of Cisco's proprietary proprietary DUO software.
 
-## Install:
-An automatic install script is in progress, for the time being, this manual process is required.
-1. Install dependencies using apt-get or homebrew
-    - jq
-    - coreutils
-    - qrencode
-    - oath-toolkit
-2. Place the `duo-workaround` script in the `/usr/local/bin/` folder.
-3. Make sure the file is executable with the following terminal command:
-```bash
-chmod +x /usr/local/bin/duo-workaround
-```
+## Is it secure?
+Absolutely, DUO uses the same HOTP standards as every other 2FA app in the security space. They just encapsulate that standard in their own software to lock you down to their app. This tool tells DUO that you are the DUO app allowing you to activate a 2FA key in whatever app you choose.
+Alternatively, if you are uncomfortable placing your DUO credentials in a web interface, there is a script-based version of the tool.
 
+## Why not just use DUO?
+There are many reasons you may want to avoid using the DUO app from usability to ideological. I've listed a few below:
+- You already use a 2FA app like Google Authenticator and don't want another.
+- You prefer using open-source or non-proprietary software
+- You are uncomfortable with the data collection that takes place within the DUO Mobile application.
+- You would like to have DUO 2FA access on a computer and not just a mobile device that may die.
+- You have multiple mobile devices you would like to secure with a single could-based 2FA solution.
+- You would like to have 2FA autofill with supported apps to not ever have to deal with DUO notifications or codes.
 
-## Setup:
-1. Install `duo-workaround`
-2. Navigate to your DUO Security Portal
-3. Login with your current DUO 2fa method
-4. On your device management screen, select `+ Add another device`
-<img width="423" alt="Screenshot 2022-09-26 at 12 51 56 AM" src="https://user-images.githubusercontent.com/25465133/192222493-d9040d55-7271-4140-ba12-af4480781c26.png">
-
-5. Select `Tablet`
-<img width="423" alt="Screenshot 2022-09-26 at 12 47 44 AM" src="https://user-images.githubusercontent.com/25465133/192221693-85f10e11-51c1-4b0b-8107-dbecd83d9bee.png">
-
-6. Select `Android`
-<img width="423" alt="Screenshot 2022-09-26 at 12 48 00 AM" src="https://user-images.githubusercontent.com/25465133/192221770-be4ccbd6-232d-43ed-8d3a-2c6086950aa0.png">
-
-7. Select `I have DUO Mobile installed`
-<img width="423" alt="Screenshot 2022-09-26 at 12 48 22 AM" src="https://user-images.githubusercontent.com/25465133/192221856-f8c09525-feec-46bc-b434-a5b0bad01f9d.png">
-
-8. Right Click the QR Code and copy the image URL
-<img width="423" alt="Screenshot 2022-09-26 at 12 49 43 AM" src="https://user-images.githubusercontent.com/25465133/192222277-08102469-a447-4960-b17d-e6dd36bc5397.png">
-
-9. In terminal type the following and press 'Enter' (replace the URL with the URL you copied)
-```bash
-duo-workaround 'https://api-12345678.duosecurity.com/frame...'
-```
-![SCR-20220926-1hx](https://user-images.githubusercontent.com/25465133/192225295-545c1a31-fcf9-4a2d-b212-281c2f4ce324.png)
-
-10. Open your HOTP app of choice (Such as Google Authenticator) and scan the QR Code.
-11. Done! The OTP codes within you HOTP app should be in sync with DUO. You may need to press the refresh button to update the code.
+## How to setup duo-bypass (web version):
+1. Navigate you your organization's DUO Security Portal.
+2. Login with your current DUO 2FA method.
+3. In the Security Portal, select + Add another device.
+![image](https://user-images.githubusercontent.com/25465133/194498066-8efc5f3a-b040-4e98-aa38-f00409f549b3.png)
+4. Select Tablet.
+![image](https://user-images.githubusercontent.com/25465133/194498084-d56055ac-03b3-4642-b599-c6eaafe0232f.png)
+5. Select Android.
+![image](https://user-images.githubusercontent.com/25465133/194498097-88926758-0bb5-4f4b-a116-42f5ae9eed3d.png)
+6. Select I have DUO Mobile installed.
+![image](https://user-images.githubusercontent.com/25465133/194498114-24fe669f-7412-4f6e-a249-05ce8468d59a.png)
+7. Right click on the provided QR code and copy the image URL.
+![image](https://user-images.githubusercontent.com/25465133/194498153-b2f1ce24-9c7a-437a-9bb6-5803c80f2deb.png)
+8. Navigate to the duo-bypass tool.
+9. Paste the image URL into the duo-bypass tool and select bypass.
+10. Scan the QR code into your chossen 2FA application. If the app does not support a QR code, copy the key below the QR code into your app.
+11. Generate/test your first bypass code and you're done! (You can also now rename the device in DUO if you would like)
