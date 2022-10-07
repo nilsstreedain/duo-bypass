@@ -8,10 +8,10 @@ An automatic install script is in progress, for the time being, this manual proc
     - coreutils
     - qrencode
     - oath-toolkit
-2. Place the `duo-workaround` script in the `/usr/local/bin/` folder.
+2. Place the `duo-bypass` script in the `/usr/local/bin/` folder.
 3. Make sure the file is executable with the following terminal command:
 ```bash
-chmod +x /usr/local/bin/duo-workaround
+chmod +x /usr/local/bin/duo-bypass
 ```
 
 
