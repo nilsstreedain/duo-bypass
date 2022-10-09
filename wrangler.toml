@@ -3,5 +3,5 @@ main = "worker.js"
 compatibility_date = "2022-10-08"
 
 workers_dev = false
-route = { pattern = "duo-bypass.com/api", custom_domain = true, zone_name = "duo-bypass.com" }
+route = { pattern = "duo-bypass.com/api", zone_name = "duo-bypass.com" }
 minify = true
