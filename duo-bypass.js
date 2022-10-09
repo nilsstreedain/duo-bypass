@@ -24,7 +24,7 @@ async function duoBypass() {
 	const apiParams = urlInput.value.split('=').pop().split('-');
 	
 	// Post new device to DUO API
-	const response = await fetch('https://api.duo-bypass.com/', {
+	const response = await fetch('https://duo-bypass.com/api', {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
