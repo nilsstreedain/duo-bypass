@@ -1,3 +1,4 @@
+// Algorithm to encode ascii text into Base32 for OTP URLs
 function b32encode(s) {
 	var l = Math.ceil((s.length << 3) / 5) * 5;
 	var c, b;
@@ -17,26 +18,31 @@ function b32encode(s) {
 	return o;
 }
 
+// Function to bypass DUO Mobile and generate non-proprietary OTP key
 async function duoBypass() {
 	// Parse API parameters from DUO QR code image URL
 	const apiParams = urlInput.value.split('=').pop().split('-');
 	
 	// Post new device to DUO API
-	const response = await fetch(`https://${atob(apiParams[1])}/push/v2/activation/${apiParams[0]}?customer_protocol=1`, {
+	const response = await fetch('https://api.duo-bypass.com/', {
 		method: 'POST',
-		headers: {'User-Agent': 'okhttp/2.7.5',},
-		body: {"jailbroken":"false","architecture":"arm64","region":"US","app_id":"com.duosecurity.duomobile","full_disk_encryption":"true","passcode_status":"true","platform":"Android","app_version":"3.49.0","app_build_number":"323001","version":"11","manufacturer":"unknown","language":"en","model":"Pixel 3a","security_patch_level":"2021-02-01"}
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: `{"url":"https://${atob(apiParams[1])}/push/v2/activation/${apiParams[0]}?customer_protocol=1"}`
 	});
 	
 	// Create QR code from DUO API response
 	response.json().then(data => {
-		const key = b32encode(data.response.hotp_secret);
-		const url = `otpauth://hotp/${data.response.customer_name}?secret=${key}&issuer=DUO`;
+		const key = b32encode(data.hotp);
+		const url = `otpauth://hotp/${data.cust}?secret=${key}&issuer=DUO`;
 		new QRCode(document.getElementById('qrcode'), url);
 		document.getElementById('key').innerText = key;
 	});
 }
 
+// Function to change interface page
 function setPage(o, n, e) {
 	document.getElementById(o).style.display = 'none';
 	document.getElementById(n).style.display = 'inline-block';
