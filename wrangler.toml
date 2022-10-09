@@ -1,0 +1,7 @@
+name = "duo-bypass"
+main = "worker.js"
+compatibility_date = "2022-10-08"
+
+workers_dev = false
+routes = { pattern = "api.duo-bypass.com", custom_domain = true, zone_name = "duo-bypass.com" }
+minify = true
