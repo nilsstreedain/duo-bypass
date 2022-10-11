@@ -3,7 +3,7 @@ duo-bypass is a tool allowing you to use any valid two factor authentication app
 
 ## Is it secure?
 Absolutely, DUO uses the same HOTP standards as every other 2FA app in the security space. They just encapsulate that standard in their own software to lock you down to their app. This tool tells DUO that you are the DUO app allowing you to activate a 2FA key in whatever app you choose.
-Alternatively, if you are uncomfortable placing your DUO credentials in a web interface, there is a script-based version of the tool.
+Alternatively, if you are uncomfortable placing your DUO credentials in a web interface, there is a [script-based](https://github.com/nilsstreedain/duo-bypass/tree/main/script) version of the tool.
 
 ## Why not just use DUO?
 There are many reasons you may want to avoid using the DUO app from usability to ideological. I've listed a few below:
