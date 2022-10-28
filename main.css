@@ -43,6 +43,10 @@ nav a {
 	color: var(--dGray);
 }
 
+nav a:hover {
+	cursor:pointer;
+}
+
 #curr {
 	color: var(--accent);
 	border-bottom: 3px solid var(--accent);
@@ -99,9 +103,15 @@ button, footer {
 	color: var(--white);
 }
 
-form button:active {
+button:hover {
 	background-color: var(--dGray);
-	color: var(--mGray);
+	color: var(--lGray);
+	cursor:pointer;
+}
+
+button:active {
+	background-color: var(--mGray);
+	color: var(--dGray);
 }
 
 #qrcode {
@@ -132,3 +142,4 @@ footer {
 footer a {
 	color: var(--white);
 }
+
