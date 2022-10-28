@@ -43,10 +43,6 @@ nav a {
 	color: var(--dGray);
 }
 
-nav a:hover {
-	cursor:pointer;
-}
-
 #curr {
 	color: var(--accent);
 	border-bottom: 3px solid var(--accent);
@@ -54,6 +50,7 @@ nav a:hover {
 
 #curr, nav a:hover {
 	background-color: var(--mGray);
+	cursor:pointer;
 }
 
 main {
