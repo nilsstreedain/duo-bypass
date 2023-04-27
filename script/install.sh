@@ -12,7 +12,7 @@
 brew bundle --file=<(curl -fsSL https://raw.githubusercontent.com/nilsstreedain/duo-bypass/main/script/Brewfile)
 
 # Install script to /usr/local/bin/ folder
-sudo curl https://raw.githubusercontent.com/nilsstreedain/duo-bypass/change-domain/script/duo-bypass -sSLo "/usr/local/bin/duo-bypass"
+sudo curl https://raw.githubusercontent.com/nilsstreedain/duo-bypass/main/script/duo-bypass -sSLo "/usr/local/bin/duo-bypass"
 
 # Give script executable permission
 sudo chmod +x /usr/local/bin/duo-bypass
