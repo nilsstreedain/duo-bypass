@@ -1,0 +1,5 @@
+# 'brew install'
+brew "jq"
+brew "coreutils"
+brew "qrencode"
+brew "oath-toolkit"

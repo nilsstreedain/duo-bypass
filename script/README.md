@@ -1,8 +1,17 @@
 # duo-bypass (script)
 Script to generate valid HOTP key from DUO Security credentials allowing use of 3rd party and open source authentication applications such as Google Authenticator. An automatic installer, along with a online version is currently in progress.
 
-## Install:
-An automatic install script is in progress, for the time being, this manual process is required.
+## Installation Script
+For quick installaion, follow the instructions below, otherwise. If you are not comfortable with installaion via a script, follow the steps in the [Manual Install](#manual-install) section below.
+
+WARNING: Automatic script requires Homebrew to be setup/installed. If you do not have homebrew installed, read more [here](brew.sh).
+
+Paste the command below in terminal and enter your password to install duo-bypass
+```bash
+curl -sSL https://raw.githubusercontent.com/nilsstreedain/duo-bypass/main/script/install.sh | bash
+```
+
+## Manual Install
 1. Install dependencies using apt-get or homebrew
     - jq
     - coreutils
@@ -15,7 +24,7 @@ chmod +x /usr/local/bin/duo-bypass
 ```
 
 
-## Setup:
+## Setup
 1. Install `duo-bypass`
 2. Navigate to your DUO Security Portal
 3. Login with your current DUO 2fa method
