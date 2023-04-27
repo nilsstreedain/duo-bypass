@@ -1,6 +1,6 @@
 #!/bin/sh +x
 
-#	duo-workaround
+#	duo-bypass
 #
 #	Script to generate valid HOTP key from DUO Security credentials allowing
 #	use of 3rd party and open source authentication applications.
