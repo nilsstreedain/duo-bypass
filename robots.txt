@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://duo-bypass.nilsstreedain.com/sitemap.xml
